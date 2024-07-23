@@ -209,7 +209,7 @@ export default function LandingPage() {
                                 <p className="m-auto pt-2 text-lg font-thin text-center">
                                     Scroll down to see your search results based on our data
                                 </p>
-                                {results?.category == "actor" ? (
+                                {results?.category.toLowerCase() == "actor" ? (
                                     <ActorSingleResult
                                         data={results?.data[0]}></ActorSingleResult>
                                 ) : (
@@ -227,7 +227,7 @@ export default function LandingPage() {
                                 <p className="m-auto pt-2 text-lg font-thin text-center">
                                     Scroll down to see your search results based on our data
                                 </p>
-                                {results?.category == "actor" ? (
+                                {results?.category.toLowerCase() == "actor" ? (
                                     <ActorMultipleResult
                                         data={results?.data}></ActorMultipleResult>
                                 ) : (

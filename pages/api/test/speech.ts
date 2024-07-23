@@ -17,8 +17,8 @@ const client = new BedrockRuntimeClient({
   region: "ap-southeast-2",
   credentials: {
     accessKeyId : "",
-    secretAccessKey:"",
-    sessionToken:""
+    secretAccessKey: "",
+    sessionToken: ""
   },
 });
 
