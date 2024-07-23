@@ -46,9 +46,45 @@ export default function LandingPage() {
                         propertyImages: [
                             "https://rimh2.domainstatic.com.au/aOy_2RdRAZnxU40AhLcPwMCQlWU=/660x440/filters:format(jpeg):quality(80)/2018702154_1_1_230813_113349-w2000-h1250",
                         ],
-                        price: "500000",
-                        rent: "500",
-                        bond: "5000",
+                        price: 500000,
+                        rent: 500,
+                        bond: 5000,
+                        state: "NSW",
+                        createdAt: '2020-03-16',
+                    },
+                    {
+                        propertyAddress: "123, Temple St, VIC 3145",
+                        propertyImages: [
+                            "https://rimh2.domainstatic.com.au/aOy_2RdRAZnxU40AhLcPwMCQlWU=/660x440/filters:format(jpeg):quality(80)/2018702154_1_1_230813_113349-w2000-h1250",
+                        ],
+                        price: 500000,
+                        rent: 500,
+                        bond: 5000,
+                        state: "NSW",
+                        createdAt: '2020-03-16',
+                    },
+                ],
+            },
+            {
+                name: 'Jeremy Hastings',
+                bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+                dob: 'Mar 16, 2020',
+                sex: 'Male',
+                phone: "0515151515",
+                email: "rod@peters.com",
+                createdAt: '2020-03-16',
+                type: "landlord",
+                image: "https://media.licdn.com/dms/image/D5603AQF0-xrTkQ20Ww/profile-displayphoto-shrink_200_200/0/1708592318824?e=2147483647&v=beta&t=5R1Z-DAzCSlcC5MlHAuKy6d6YTNC0zVgq4w1bU6mv5Q",
+                forms: [
+                    {
+                        propertyAddress: "123, Temple St, VIC 3145",
+                        propertyImages: [
+                            "https://rimh2.domainstatic.com.au/aOy_2RdRAZnxU40AhLcPwMCQlWU=/660x440/filters:format(jpeg):quality(80)/2018702154_1_1_230813_113349-w2000-h1250",
+                        ],
+                        price: 500000,
+                        rent: 500,
+                        bond: 5000,
+                        state: "VIC",
                         createdAt: '2020-03-16',
                     },
                 ],
@@ -199,13 +235,11 @@ export default function LandingPage() {
                             <>
                                 <h1 className='m-auto text-3xl font-bold text-center'>Tadaa! Your wish is my command!</h1>
                                 <p className='m-auto pt-2 text-lg font-thin text-center'>Scroll down to see your search results based on our data</p>
-                                <div className='grid grid-cols-3 gap-8'>
-                                    {results?.type == "actor" ?
-                                        <ActorMultipleResult></ActorMultipleResult>
-                                        :
-                                        <ActorMultipleResult></ActorMultipleResult>
-                                    }
-                                </div>
+                                {results?.type == "actor" ?
+                                    <ActorMultipleResult data={results?.data}></ActorMultipleResult>
+                                    :
+                                    <ActorMultipleResult data={results?.data}></ActorMultipleResult>
+                                }
                             </>
                         }
                     </div>

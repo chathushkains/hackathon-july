@@ -6,24 +6,24 @@ import BarChart from '../charts/BarChart';
 import PieChart from '../charts/PieChart';
 import PolarAreaChart from '../charts/PolarAreaChart';
 
-export default function ActorMultipleResult(props: any) {
+export default function PropertyMultipleResult(props: any) {
 
-    const actors = props.data;
+    const properties = props.data;
 
     const [totalProperties, setTotalProperties] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalRent, setTotalRent] = useState(0);
 
     useEffect(() => {
-        if (actors) {
+        if (properties) {
             let total = 0
             let totalPrice = 0
             let totalRent = 0
 
-            actors.map((actor: any) => {
-                total += actor?.forms?.length
+            properties.map((property: any) => {
+                total += property?.forms?.length
 
-                actor?.forms?.map((form: any) => {
+                property?.forms?.map((form: any) => {
                     totalPrice += form?.price
                     totalRent += form?.rent
                 })
@@ -33,7 +33,7 @@ export default function ActorMultipleResult(props: any) {
             setTotalPrice(totalPrice)
             setTotalRent(totalRent)
         }
-    }, [actors])
+    }, [properties])
 
 
     return (
@@ -76,18 +76,18 @@ export default function ActorMultipleResult(props: any) {
                 </div>
 
                 <h1 className='text-center font-bold text-4xl pt-24'>Here are the people</h1>
-                <p className='text-center text-sm pt-2'>Click on each actor to drill down into details</p>
+                <p className='text-center text-sm pt-2'>Click on each property to drill down into details</p>
                 <div className="flex flex-row justify-center gap-6 pt-8">
-                    {actors.map((actor: any) => (
-                        <a key={actor.id} href={actor.href} className="group cursor-pointer">
+                    {properties.map((property: any) => (
+                        <a key={property.id} href={property.href} className="group cursor-pointer">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                                 <img
-                                    src={actor.image}
+                                    src={property.image}
                                     className="h-full w-full object-cover object-center group-hover:opacity-75"
                                 />
                             </div>
-                            <h3 className="text-center mt-4 font-bold text-md text-gray-700">{actor.name}</h3>
-                            <p className="text-center mt-1 capitalize text-sm text-gray-900">{actor.type}</p>
+                            <h3 className="text-center mt-4 font-bold text-md text-gray-700">{property.name}</h3>
+                            <p className="text-center mt-1 capitalize text-sm text-gray-900">{property.type}</p>
                         </a>
                     ))}
                 </div>
