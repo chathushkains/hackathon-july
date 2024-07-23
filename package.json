@@ -9,20 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-bedrock": "^3.616.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.616.0",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
     "chart.js": "^4.4.3",
     "next": "14.2.5",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
-    "@aws-sdk/client-bedrock": "^3.616.0",
-    "@aws-sdk/client-bedrock-runtime": "^3.616.0",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-speech-recognition": "^3.10.0",
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-speech-recognition": "^3.9.5",
+    "@types/regenerator-runtime": "^0.13.6",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
