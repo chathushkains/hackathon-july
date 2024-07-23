@@ -117,8 +117,9 @@ async function converse(userInput: string) {
 
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const {question } = await req.body as any;
-    const questionData = await converse(question);
+    const { question } = await req.body as any;
+    const trimmedQuestion = question.trim();
+    const questionData = await converse(trimmedQuestion);
 
     if (questionData) {
       return res.status(200).json({questionData});
