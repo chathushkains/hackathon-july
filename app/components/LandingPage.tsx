@@ -22,33 +22,16 @@ export default function LandingPage() {
     const [firstSearch, setFirstSearch] = useState(false);
     const [search, setSearch] = useState("");
     const [results, setResults] = useState<any>({});
-    const [error, setError] = useState(false);
 
     const handleWish = async () => {
+        setResults({})
         setFirstSearch(true);
-        setResults({});
 
-        try {
-            //fetch APi
-            console.log("search", search);
-            axios.post('api/test/speech', { question: search }).then((res) => {
-                console.log(res)
-                setResults(res?.data)
+        axios.post('api/test/speech', { question:search}).then((res) => {
+            setResults(res?.data) 
+        } );;
 
-                if (res?.data?.error) {
-                    setError(true)
-                }
-            }).catch((error) => {
-                console.log(error)
-                setError(true)
-            });;
-
-        } catch (error) {
-            setError(true)
-        }
-
-
-        // const results = {
+        // const response = {
         //     "category": "actor",
         //     "data": [
         //         {
@@ -68,10 +51,46 @@ export default function LandingPage() {
         //                     "name": "Spruce Point",
         //                     "address": "606 Spruce St, NSW 1023",
         //                     "state": "NSW",
+        //                     "image": "https://i.pravatar.cc/261",
+        //                     "price": 800,
+        //                     "rent": 350,
+        //                     "bond": 500,
+        //                     "createdAt": "2020-03-24"
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             "id": "550e8400-e29b-41d4-a716-446655440009",
+        //             "name": "Benjamin",
+        //             "dob": "1981-02-27",
+        //             "bio": null,
+        //             "sex": "Male",
+        //             "phone": "4364344598",
+        //             "email": "benjamin.clark@example.com",
+        //             "createdAt": null,
+        //             "type": "actor",
+        //             "image": "https://i.pravatar.cc/250",
+        //             "properties": [
+        //                 {
+        //                     "id": 9,
+        //                     "name": "Spruce Point",
+        //                     "address": "606 Spruce St, NSW 1023",
+        //                     "state": "VIC",
         //                     "images": ["https://i.pravatar.cc/261"],
         //                     "price": 12000,
         //                     "rent": 120,
         //                     "bond": 1000,
+        //                     "createdAt": "2020-03-24"
+        //                 },
+        //                 {
+        //                     "id": 9,
+        //                     "name": "Spruce Point",
+        //                     "address": "606 Spruce St, NSW 1023",
+        //                     "state": "NT",
+        //                     "images": ["https://i.pravatar.cc/261"],
+        //                     "price": 956,
+        //                     "rent": 400,
+        //                     "bond": 4000,
         //                     "createdAt": "2020-03-24"
         //                 }
         //             ]
@@ -79,6 +98,63 @@ export default function LandingPage() {
         //     ]
         // }
 
+        // const response = {
+        //     "category": "property",
+        //     "data": [
+        //         {
+        //             "id": 9,
+        //             "name": "Spruce Point",
+        //             "address": "606 Spruce St, NSW 1023",
+        //             "state": "VIC",
+        //             "image": "https://i.pravatar.cc/261",
+        //             "price": 80050,
+        //             "rent": 350,
+        //             "bond": 500,
+        //             "createdAt": "2020-03-24",
+        //             "actors": [
+        //                 {
+        //                     "id": "550e8400-e29b-41d4-a716-446655440009",
+        //                     "name": "Benjamin",
+        //                     "dob": "1981-02-27",
+        //                     "bio": null,
+        //                     "sex": "Male",
+        //                     "phone": "4364344598",
+        //                     "email": "benjamin.clark@example.com",
+        //                     "createdAt": null,
+        //                     "type": "actor",
+        //                     "image": "https://i.pravatar.cc/250",
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             "id": 9,
+        //             "name": "Spruce Point",
+        //             "address": "606 Spruce St, NSW 1023",
+        //             "state": "NSW",
+        //             "image": "https://i.pravatar.cc/261",
+        //             "price": 11000,
+        //             "rent": 200,
+        //             "bond": 150,
+        //             "createdAt": "2020-03-24",
+        //             "actors": [
+        //                 {
+        //                     "id": "550e8400-e29b-41d4-a716-446655440009",
+        //                     "name": "Benjamin",
+        //                     "dob": "1981-02-27",
+        //                     "bio": null,
+        //                     "sex": "Male",
+        //                     "phone": "4364344598",
+        //                     "email": "benjamin.clark@example.com",
+        //                     "createdAt": null,
+        //                     "type": "actor",
+        //                     "image": "https://i.pravatar.cc/250",
+        //                 }
+        //             ]
+        //         },
+        //     ]
+        // }
+
+        setResults(response)
     };
 
     const handleClear = () => {
@@ -206,6 +282,7 @@ export default function LandingPage() {
                                 className="rounded-full bg-purple-800 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-purple-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 onClick={() => handleWish()}
                             />
+
                             <a
                                 href="#"
                                 className="text-sm font-semibold leading-6 text-gray-900"
@@ -218,7 +295,7 @@ export default function LandingPage() {
 
                 {(
                     <div className="bg-white">
-                        {error && <NoResult></NoResult>}
+                        {results?.data?.length == 0 && <NoResult></NoResult>}
 
                         {results?.data?.length == 1 && (
                             <div className="">
@@ -228,7 +305,7 @@ export default function LandingPage() {
                                 <p className="m-auto pt-2 text-lg font-thin text-center">
                                     Scroll down to see your search results based on our data
                                 </p>
-                                {"actor|agent|landlord|tenant".includes(results?.category?.toLowerCase()) ? (
+                                {"actor|agent|landlord|tenant".includes(results?.category.toLowerCase()) ? (
                                     <ActorSingleResult
                                         data={results?.data[0]}></ActorSingleResult>
                                 ) : (
@@ -246,7 +323,7 @@ export default function LandingPage() {
                                 <p className="m-auto pt-2 text-lg font-thin text-center">
                                     Scroll down to see your search results based on our data
                                 </p>
-                                {"actor|agent|landlord|tenant".includes(results?.category?.toLowerCase()) ? (
+                                {"actor|agent|landlord|tenant".includes(results?.category.toLowerCase()) ? (
                                     <ActorMultipleResult
                                         data={results?.data}></ActorMultipleResult>
                                 ) : (

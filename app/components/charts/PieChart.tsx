@@ -53,7 +53,7 @@ const PieChart = (props: any) => {
             <h1 className='py-4 text-lg font-semibold'>{props.title}</h1>
             <p className='text-sm'>Hover over the graph to see values</p>
             <p className='pb-4 text-sm font-thin'>{props.description}</p>
-            <Pie data={data} options={options} />
+            { props?.data && <Pie data={props?.data} options={options} />}            
         </div>
     );
 };

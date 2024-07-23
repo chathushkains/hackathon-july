@@ -7,13 +7,28 @@ import PieChart from '../charts/PieChart';
 import PolarAreaChart from '../charts/PolarAreaChart';
 
 export default function ActorMultipleResult(props: any) {
-
-
     const actors = props.data;
-    console.log("actors" , actors)
     const [totalProperties, setTotalProperties] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalRent, setTotalRent] = useState(0);
+
+    const [pieData, setPieData] = useState<any>({
+        labels: [],
+        datasets: [
+            {
+                data: []
+            }
+        ]
+    })
+
+    const [lineData, setLineData] = useState<any>({
+        labels: [],
+        datasets: [
+            {
+                data: []
+            }
+        ]
+    })
 
     useEffect(() => {
         if (actors) {
@@ -21,18 +36,73 @@ export default function ActorMultipleResult(props: any) {
             let totalPrice = 0
             let totalRent = 0
 
+            let stateNames: any = []
+            let stateValues: any = []
+            let stateRentValues: any = []
+            let stateBondValues: any = []
+
             actors.map((actor: any) => {
                 total += actor?.properties?.length
 
                 actor?.properties?.map((property: any) => {
                     totalPrice += property?.price
                     totalRent += property?.rent
+                    stateNames.push(property?.state)
+                    stateValues.push(property?.price)
+                    stateRentValues.push(property?.rent)
+                    stateBondValues.push(property?.bond)
                 })
             })
 
             setTotalProperties(total)
             setTotalPrice(totalPrice)
             setTotalRent(totalRent)
+            setPieData(
+                {
+                    labels: stateNames,
+                    datasets: [
+                        {
+                            data: stateValues,
+                            backgroundColor: [
+                                '#4b0082',
+                                '#5D3FD3',
+                                '#d9d2e9'
+                            ],
+                        }
+                    ],
+
+                }
+            )
+
+            setLineData(
+                {
+                    labels: stateNames,
+                    datasets: [
+                        {
+                            label: 'Price',
+                            data: stateValues,
+                            borderColor: '#4b0082',
+                            backgroundColor: '#4b0082',
+                            tension: 0.1,
+                        },
+                        {
+                            label: 'Rent',
+                            data: stateRentValues,
+                            borderColor: '#5D3FD3',
+                            backgroundColor: '#5D3FD3',
+                            tension: 0.1,
+                        },
+                        {
+                            label: 'Bond',
+                            data: stateBondValues,
+                            borderColor: '#d9d2e9',
+                            backgroundColor: '#d9d2e9',
+                            tension: 0.1,
+                        }
+                    ],
+
+                }
+            )
         }
     }, [actors])
 
@@ -69,10 +139,10 @@ export default function ActorMultipleResult(props: any) {
 
                 <div className='grid grid-cols-2 text-center'>
                     <div className='flex flex-row justify-center items-center basis-1/3'>
-                        <PieChart title={"Total Value"}></PieChart>
+                        <PieChart title={"Total Value By State"} data={pieData}></PieChart>
                     </div>
                     <div className='content-center '>
-                        <LineChart title={"Last Seen Online"}></LineChart>
+                        <LineChart title={"Value Based on Type"} data={lineData}></LineChart>
                     </div>
                 </div>
 

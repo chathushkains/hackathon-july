@@ -9,7 +9,7 @@ const Line = dynamic(() => import('react-chartjs-2').then((mod) => mod.Line), {
 
 const options: any = {
     plugins: {
-        legend: false
+        legend: true
     },
     scales: {
         x: {
@@ -46,7 +46,7 @@ const LineChart = (props: any) => {
             <h1 className='pt-4 text-lg font-semibold'>{props.title}</h1>
             <p className='text-sm'>Hover over the graph to see values</p>
             <p className='pb-4 text-sm font-thin'>{props.description}</p>
-            <Line data={data} options={options} />
+            <Line data={props?.data} options={options} />
         </div>
     );
 };

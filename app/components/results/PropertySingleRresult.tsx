@@ -1,14 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import { StarIcon } from '@heroicons/react/20/solid'
-import { Radio, RadioGroup } from '@headlessui/react'
-import LineChart from '../charts/LineChart';
-import PieChart from '../charts/PieChart';
-import BarChart from '../charts/BarChart';
-
 export default function PropertySingleResult(props: any) {
-
     const property = props.data;
 
     return (
@@ -99,17 +91,20 @@ export default function PropertySingleResult(props: any) {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-3 text-center gap-6 py-8'>
+                {/* <div className='grid grid-cols-3 text-center gap-6 py-8'>
                     <div className='content-center'>
-                        <BarChart title={"Total Properties"}></BarChart>
+                        <h1 className='pt-4 text-lg font-semibold'>Rent</h1>
+                        <p className='text-7xl font-bold pt-2'>${property.rent}</p>
                     </div>
-                    <div className='flex flex-row justify-center items-center'>
-                        <PieChart title={"Total Value"}></PieChart>
+                    <div className='content-center'>
+                        <h1 className='pt-4 text-lg font-semibold'>Bond</h1>
+                        <p className='text-7xl font-bold pt-2'>${property.bond}</p>
                     </div>
-                    <div className='content-center '>
-                        <LineChart title={"Last Seen Online"}></LineChart>
+                    <div className='content-center'>
+                        <h1 className='pt-4 text-lg font-semibold'>Price</h1>
+                        <p className='text-7xl font-bold pt-2'>${property.price}</p>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="bg-white">
                     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">

@@ -107,7 +107,7 @@ export default function ActorSingleResult(props: any) {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-3 text-center gap-6 py-8'>
+                {/* <div className='grid grid-cols-3 text-center gap-6 py-8'>
                     <div className='content-center'>
                         <BarChart title={"Total Properties"}></BarChart>
                     </div>
@@ -117,7 +117,7 @@ export default function ActorSingleResult(props: any) {
                     <div className='content-center '>
                         <LineChart title={"Last Seen Online"}></LineChart>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="bg-white">
                     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
