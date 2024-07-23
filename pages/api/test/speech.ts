@@ -7,9 +7,7 @@ import {
 } from "@aws-sdk/client-bedrock-runtime";
 import fs from 'fs';
 import { NextApiRequest, NextApiResponse } from "next";
-import { NextRequest, NextResponse } from "next/server";
 import path from 'path';
-// import { NextResponse } from "next/server";
 
 const __dirname = path.resolve();
 
@@ -24,10 +22,8 @@ const client = new BedrockRuntimeClient({
 });
 
 const modelId = "anthropic.claude-3-haiku-20240307-v1:0";
-const propertyFilePath = path.join(process.cwd(),'pages/api/test', 'property.xlsx');
+const propertyFilePath = path.join(process.cwd(),'pages/api/test', 'propertylist.xlsx');
 const fileContents = fs.readFileSync(propertyFilePath);
-const userFilePath = path.join(process.cwd(),'pages/api/test', 'user.xlsx');
-const userContents = fs.readFileSync(userFilePath);
 
 
 const additionalParameters = {
@@ -63,7 +59,74 @@ function extractJson(responseText: string) {
 
 async function converse(userInput: string) {
   try {
-    const jsonText = `convert to JSON add properties data inside data also create data as array of objects ` + "Add a category after converting to json category based on actor which is role along with data.";
+    const jsonText = `Based on the actor's role in the input data, structure the JSON as follows:
+    1. If the category is "landlord", "agent", or "tenant", the JSON should include the user's properties inside the "data" array as objects.
+    2. If the category is "property", the JSON should include the properties and their associated users inside the "data" array as objects.
+
+    Example for category "landlord":
+    {
+      "category": "landlord",
+      "data": [
+        {
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "name": "John Smith",
+          "dob": "1980-01-15",
+          "bio": null,
+          "sex": "Male",
+          "phone": "4364344590",
+          "email": "john.smith@example.com",
+          "createdAt": "2020-03-16",
+          "type": "landlord",
+          "image": "https://i.pravatar.cc/100",
+          "properties": [
+            {
+              "id": 1,
+              "name": "Riverside Villas",
+              "address": "123 Main St, NSW 1122",
+              "state": "NSW",
+              "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTDg-Su0SiwXNP88Oz1j2GV_bU8Hm9gpeB6Q&s",
+              "price": 12000,
+              "rent": 120,
+              "bond": 1000,
+              "createdAt": "2020-03-16"
+            }
+          ]
+        }
+      ]
+    }
+
+    Example for category "property":
+    {
+      "category": "property",
+      "data": [
+        {
+          "id": 1,
+          "name": "Riverside Villas",
+          "address": "123 Main St, NSW 1122",
+          "state": "NSW",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTDg-Su0SiwXNP88Oz1j2GV_bU8Hm9gpeB6Q&s",
+          "price": 12000,
+          "rent": 120,
+          "bond": 1000,
+          "createdAt": "2020-03-16",
+          "users": [
+            {
+              "id": "550e8400-e29b-41d4-a716-446655440000",
+              "name": "John Smith",
+              "dob": "1980-01-15",
+              "bio": null,
+              "sex": "Male",
+              "phone": "4364344590",
+              "email": "john.smith@example.com",
+              "createdAt": "2020-03-16",
+              "type": "landlord",
+              "image": "https://i.pravatar.cc/100"
+            }
+          ]
+        }
+      ]
+    }
+    `;
     const response = await client.send(
       new ConverseCommand({
         modelId,
@@ -77,15 +140,6 @@ async function converse(userInput: string) {
                   format: "xlsx",
                   source: {
                     bytes: fileContents,
-                  },
-                },
-              },
-              {
-                document: {
-                  name: "User Data",
-                  format: "xlsx",
-                  source: {
-                    bytes: userContents,
                   },
                 },
               },
@@ -117,22 +171,50 @@ async function converse(userInput: string) {
 
 
 
-function transformDataStructure(data:any) {
-  if (!data || !data.data) return data;
-
+function transformDataStructure(data: any) {
   const transformedData = {
     category: data.category,
-    data: data.data.map((item: { [x: string]: any; property: any; }) => {
-      const { property, ...rest } = item;
-      return {
-        ...rest,
-        properties: property ? [property] : []
-      };
-    })
+    data: data.data.map((user: any) => {
+      if (user.type === "landlord" || user.type === "agent" || user.type === "tenant") {
+        return {
+          ...user,
+          properties: user.properties.map((property: any) => ({
+            id: property.id,
+            name: property.name,
+            address: property.address,
+            state: property.state,
+            image: property.image,
+            price: property.price,
+            rent: property.rent,
+            bond: property.bond,
+            createdAt: property.createdAt,
+          })),
+        };
+      } else if (user.type === "property") {
+        return {
+          ...user,
+          users: user.users.map((userDetail: any) => ({
+            id: userDetail.id,
+            name: userDetail.name,
+            dob: userDetail.dob,
+            bio: userDetail.bio,
+            sex: userDetail.sex,
+            phone: userDetail.phone,
+            email: userDetail.email,
+            createdAt: userDetail.createdAt,
+            type: userDetail.type,
+            image: userDetail.image,
+          })),
+        };
+      }
+    }),
   };
-
   return transformedData;
 }
+
+
+
+
 
 
 
