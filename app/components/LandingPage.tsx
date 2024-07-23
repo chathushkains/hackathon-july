@@ -154,7 +154,7 @@ export default function LandingPage() {
         //     ]
         // }
 
-        setResults(response)
+        // setResults(response)
     };
 
     const handleClear = () => {
