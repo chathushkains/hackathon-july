@@ -22,12 +22,31 @@ export default function LandingPage() {
     const [firstSearch, setFirstSearch] = useState(false);
     const [search, setSearch] = useState("");
     const [results, setResults] = useState<any>({});
+    const [error, setError] = useState(false);
 
     const handleWish = async () => {
         setFirstSearch(true);
-        //fetch APi
-        console.log("search", search);
-        axios.post('api/test/speech', { question:search}).then((res) => {setResults(res?.data) , console.log(res?.data)} );;
+        setResults({});
+
+        try {
+            //fetch APi
+            console.log("search", search);
+            axios.post('api/test/speech', { question: search }).then((res) => {
+                console.log(res)
+                setResults(res?.data)
+
+                if (res?.data?.error) {
+                    setError(true)
+                }
+            }).catch((error) => {
+                console.log(error)
+                setError(true)
+            });;
+
+        } catch (error) {
+            setError(true)
+        }
+
 
         // const results = {
         //     "category": "actor",
@@ -59,11 +78,12 @@ export default function LandingPage() {
         //         }
         //     ]
         // }
-        
+
     };
 
     const handleClear = () => {
         setFirstSearch(false);
+        setResults({})
     };
 
     return (
@@ -186,7 +206,6 @@ export default function LandingPage() {
                                 className="rounded-full bg-purple-800 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-purple-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 onClick={() => handleWish()}
                             />
-
                             <a
                                 href="#"
                                 className="text-sm font-semibold leading-6 text-gray-900"
@@ -199,7 +218,7 @@ export default function LandingPage() {
 
                 {(
                     <div className="bg-white">
-                        {results?.data?.length == 0 && <NoResult></NoResult>}
+                        {error && <NoResult></NoResult>}
 
                         {results?.data?.length == 1 && (
                             <div className="">
@@ -209,7 +228,7 @@ export default function LandingPage() {
                                 <p className="m-auto pt-2 text-lg font-thin text-center">
                                     Scroll down to see your search results based on our data
                                 </p>
-                                {results?.category.toLowerCase() == "actor" ? (
+                                {"actor|agent|landlord|tenant".includes(results?.category?.toLowerCase()) ? (
                                     <ActorSingleResult
                                         data={results?.data[0]}></ActorSingleResult>
                                 ) : (
@@ -227,7 +246,7 @@ export default function LandingPage() {
                                 <p className="m-auto pt-2 text-lg font-thin text-center">
                                     Scroll down to see your search results based on our data
                                 </p>
-                                {results?.category.toLowerCase() == "actor" ? (
+                                {"actor|agent|landlord|tenant".includes(results?.category?.toLowerCase()) ? (
                                     <ActorMultipleResult
                                         data={results?.data}></ActorMultipleResult>
                                 ) : (
