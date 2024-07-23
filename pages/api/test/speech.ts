@@ -62,7 +62,7 @@ async function converse(userInput: string) {
     const jsonText = `Based on the actor's role in the input data, structure the JSON as follows:
     1. If the category is "landlord", "agent", or "tenant", the JSON should include the user's properties inside the "data" array as objects.
     2. If the category is "property", the JSON should include the properties and their associated users inside the "data" array as objects.
-
+    
     Example for category "landlord":
     {
       "category": "landlord",
@@ -126,7 +126,8 @@ async function converse(userInput: string) {
         }
       ]
     }
-    `;
+    and return without any additional text paragraphs make sure Do not include any explanations.Make sure data.length less than 11`;
+    ;
     const response = await client.send(
       new ConverseCommand({
         modelId,
@@ -155,11 +156,9 @@ async function converse(userInput: string) {
       ? response.output?.message?.content[0]?.text
       : "";
 
-    if (responseText) {
-      const data = extractJson(responseText);
-      const transformedData = transformDataStructure(data);
-      return transformedData;
-    } else {
+      if (responseText) {
+        return JSON.parse(responseText);
+      }else {
       console.error("No response text received");
       return null;
     }
