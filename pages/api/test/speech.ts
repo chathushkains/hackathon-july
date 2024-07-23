@@ -6,6 +6,7 @@ import {
   ConverseRequest
 } from "@aws-sdk/client-bedrock-runtime";
 import fs from 'fs';
+import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import path from 'path';
 // import { NextResponse } from "next/server";
@@ -22,9 +23,9 @@ const client = new BedrockRuntimeClient({
 });
 
 const modelId = "anthropic.claude-3-haiku-20240307-v1:0";
-const propertyFilePath = path.join(process.cwd(),'src/app/api/test', 'property.xlsx');
+const propertyFilePath = path.join(process.cwd(),'pages/api/test', 'property.xlsx');
 const fileContents = fs.readFileSync(propertyFilePath);
-const userFilePath = path.join(process.cwd(),'src/app/api/test', 'user.xlsx');
+const userFilePath = path.join(process.cwd(),'pages/api/test', 'user.xlsx');
 const userContents = fs.readFileSync(userFilePath);
 
 
@@ -114,19 +115,19 @@ async function converse(userInput: string) {
 
 
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const data = await req.json();
-    const questionData = await converse(data?.question);
+    const {question } = await req.body as any;
+    const questionData = await converse(question);
 
     if (questionData) {
-      return NextResponse.json(questionData);
+      return res.status(200).json({questionData});
     } else {
-      return NextResponse.json({ error: 'No data returned from converse function' });
+      return res.status(400).json({error : 'No data returned from converse function'});
     }
   } catch (error) {
     console.error('Error handling POST request:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return res.status(500).json({error : 'Internal Server error'});
   }
 }
 
