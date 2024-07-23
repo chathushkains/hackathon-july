@@ -15,10 +15,11 @@ const __dirname = path.resolve();
 
 const client = new BedrockRuntimeClient({
   region: "ap-southeast-2",
+  //TODO - Please add configurations here
   credentials: {
     accessKeyId : "",
-    secretAccessKey: "",
-    sessionToken: ""
+    secretAccessKey:"",
+    sessionToken:""
   },
 });
 
@@ -62,7 +63,7 @@ function extractJson(responseText: string) {
 
 async function converse(userInput: string) {
   try {
-    const jsonText = `convert to JSON add properties data inside data also create data as array of objects ` + "Add a category after converting to json category based on Actor which is role along with data.";
+    const jsonText = `convert to JSON add properties data inside data also create data as array of objects ` + "Add a category after converting to json category based on actor which is role along with data.";
     const response = await client.send(
       new ConverseCommand({
         modelId,
