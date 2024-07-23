@@ -1,8 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { StarIcon } from '@heroicons/react/20/solid'
-import { Radio, RadioGroup } from '@headlessui/react'
 import LineChart from '../charts/LineChart';
 import PieChart from '../charts/PieChart';
 import BarChart from '../charts/BarChart';
@@ -132,7 +130,7 @@ export default function ActorSingleResult(props: any) {
                                 <div key={property.id} className="group relative">
                                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                         <img
-                                            src={property.propertyImages[0]}
+                                            src={property.images[0]}
                                             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                         />
                                     </div>
@@ -141,7 +139,7 @@ export default function ActorSingleResult(props: any) {
                                             <h3 className="text-md text-gray-700">
                                                 <a href={property.href}>
                                                     <span aria-hidden="true" className="absolute inset-0" />
-                                                    {property.propertyAddress}
+                                                    {property.address}
                                                 </a>
                                             </h3>
                                             <p className="mt-1 text-sm text-gray-400">Created {property.createdAt}</p>
