@@ -31,7 +31,7 @@ export default function LandingPage() {
         type: "landlord",
         data: [
             {
-                name: 'Rod Peters',
+                name: 'Jeremy Hastings',
                 bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
                 dob: 'Mar 16, 2020',
                 sex: 'Male',
