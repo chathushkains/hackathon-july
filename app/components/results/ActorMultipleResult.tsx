@@ -8,8 +8,9 @@ import PolarAreaChart from '../charts/PolarAreaChart';
 
 export default function ActorMultipleResult(props: any) {
 
-    const actors = props.data;
 
+    const actors = props.data;
+    console.log("actors" , actors)
     const [totalProperties, setTotalProperties] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalRent, setTotalRent] = useState(0);
