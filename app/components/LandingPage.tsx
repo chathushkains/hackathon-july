@@ -8,6 +8,7 @@ import ActorSingleResult from "./results/ActorSingleResult";
 import ActorMultipleResult from "./results/ActorMultipleResult";
 import PropertySingleResult from "./results/PropertySingleRresult";
 import PropertyMultipleResult from "./results/PropertyMultipleResult";
+import axios from "axios";
 
 const navigation = [
     { name: "", href: "#" },
@@ -24,6 +25,9 @@ export default function LandingPage() {
 
     const handleWish = async () => {
         setFirstSearch(true);
+        //fetch APi
+        console.log("search", search);
+        axios.post('api/test/speech', { question:search}).then((res) => {setResults(res?.data) , console.log(res?.data)} );;
 
         // const results = {
         //     "category": "actor",
@@ -56,7 +60,6 @@ export default function LandingPage() {
         //     ]
         // }
         
-        setResults(results)
     };
 
     const handleClear = () => {

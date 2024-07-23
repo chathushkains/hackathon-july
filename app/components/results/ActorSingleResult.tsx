@@ -6,8 +6,7 @@ import PieChart from '../charts/PieChart';
 import BarChart from '../charts/BarChart';
 
 export default function ActorSingleResult(props: any) {
-    const actor = props.data;
-
+    const actor = props?.data;
     useEffect(() => {
         if (actor.properties) {
             let states : any = []
