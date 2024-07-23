@@ -33,19 +33,6 @@ export default function ActorSingleResult(props: any) {
 
                         {/* Options */}
                         <div className="mt-4 lg:row-span-3 lg:mt-0">
-                            <h2 className="sr-only">Product information</h2>
-                            <p className="text-3xl tracking-tight text-gray-900">{actor.price}</p>
-
-                            {/* Reviews */}
-                            <div className="mt-6">
-                                <h3 className="sr-only">Reviews</h3>
-                                <div className="flex items-center">
-                                    <div className="flex items-center">
-                                    </div>
-
-                                </div>
-                            </div>
-
                             <form className="mt-10">
                                 <div className='text-xl font-bold py-4'>Contact</div>
                                 <div className='text-sm pb-4'>Reach out to {actor.name} and see how we can help them improve sales.</div>
@@ -130,25 +117,25 @@ export default function ActorSingleResult(props: any) {
                         <p className='pt-2 pb-4'>Click on the following properties to drill down to details</p>
 
                         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                            {actor.forms.map((form: any) => (
-                                <div key={form.id} className="group relative">
+                            {actor.properties.map((property: any) => (
+                                <div key={property.id} className="group relative">
                                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                         <img
-                                            src={form.propertyImages[0]}
+                                            src={property.propertyImages[0]}
                                             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                         />
                                     </div>
                                     <div className="mt-4 flex justify-between">
                                         <div>
                                             <h3 className="text-md text-gray-700">
-                                                <a href={form.href}>
+                                                <a href={property.href}>
                                                     <span aria-hidden="true" className="absolute inset-0" />
-                                                    {form.propertyAddress}
+                                                    {property.propertyAddress}
                                                 </a>
                                             </h3>
-                                            <p className="mt-1 text-sm text-gray-400">Created {form.createdAt}</p>
+                                            <p className="mt-1 text-sm text-gray-400">Created {property.createdAt}</p>
                                         </div>
-                                        <p className="text-sm font-bold text-gray-900">${form.price}</p>
+                                        <p className="text-sm font-bold text-gray-900">${property.price}</p>
                                     </div>
                                 </div>
                             ))}

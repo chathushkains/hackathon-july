@@ -6,6 +6,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import NoResult from './results/NoResult'
 import ActorSingleResult from './results/ActorSingleResult'
 import ActorMultipleResult from './results/ActorMultipleResult'
+import PropertySingleResult from './results/PropertySingleRresult'
+import PropertyMultipleResult from './results/PropertyMultipleResult'
 
 const navigation = [
     { name: '', href: '#' },
@@ -28,7 +30,62 @@ export default function LandingPage() {
     }
 
     const results: { type: string, data: any[] } = {
-        type: "landlord",
+        // type: "property",
+        // data: [
+        //     {
+        //         address: "123, Temple St, VIC 3145",
+        //         bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+        //         images: [
+        //             "https://rimh2.domainstatic.com.au/aOy_2RdRAZnxU40AhLcPwMCQlWU=/660x440/filters:format(jpeg):quality(80)/2018702154_1_1_230813_113349-w2000-h1250",
+        //         ],
+        //         price: 500000,
+        //         rent: 500,
+        //         bond: 5000,
+        //         state: "NSW",
+        //         createdAt: '2020-03-16',
+        //         actors: [
+        //             {
+        //                 name: 'Jeremy Hastings',
+        //                 bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+        //                 dob: 'Mar 16, 2020',
+        //                 sex: 'Male',
+        //                 phone: "0515151515",
+        //                 email: "rod@peters.com",
+        //                 createdAt: '2020-03-16',
+        //                 type: "landlord",
+        //                 image: "https://media.licdn.com/dms/image/D5603AQF0-xrTkQ20Ww/profile-displayphoto-shrink_200_200/0/1708592318824?e=2147483647&v=beta&t=5R1Z-DAzCSlcC5MlHAuKy6d6YTNC0zVgq4w1bU6mv5Q",
+        //             },
+
+        //         ],
+        //     },
+        //     {
+        //         address: "123, Temple St, VIC 3145",
+        //         bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+        //         images: [
+        //             "https://rimh2.domainstatic.com.au/aOy_2RdRAZnxU40AhLcPwMCQlWU=/660x440/filters:format(jpeg):quality(80)/2018702154_1_1_230813_113349-w2000-h1250",
+        //         ],
+        //         price: 500000,
+        //         rent: 500,
+        //         bond: 5000,
+        //         state: "NSW",
+        //         createdAt: '2020-03-16',
+        //         actors: [
+        //             {
+        //                 name: 'Jeremy Hastings',
+        //                 bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+        //                 dob: 'Mar 16, 2020',
+        //                 sex: 'Male',
+        //                 phone: "0515151515",
+        //                 email: "rod@peters.com",
+        //                 createdAt: '2020-03-16',
+        //                 type: "landlord",
+        //                 image: "https://media.licdn.com/dms/image/D5603AQF0-xrTkQ20Ww/profile-displayphoto-shrink_200_200/0/1708592318824?e=2147483647&v=beta&t=5R1Z-DAzCSlcC5MlHAuKy6d6YTNC0zVgq4w1bU6mv5Q",
+        //             },
+
+        //         ],
+        //     }
+        // ]
+        type: "actor",
         data: [
             {
                 name: 'Jeremy Hastings',
@@ -40,7 +97,7 @@ export default function LandingPage() {
                 createdAt: '2020-03-16',
                 type: "landlord",
                 image: "https://media.licdn.com/dms/image/D5603AQF0-xrTkQ20Ww/profile-displayphoto-shrink_200_200/0/1708592318824?e=2147483647&v=beta&t=5R1Z-DAzCSlcC5MlHAuKy6d6YTNC0zVgq4w1bU6mv5Q",
-                forms: [
+                properties: [
                     {
                         propertyAddress: "123, Temple St, VIC 3145",
                         propertyImages: [
@@ -65,30 +122,30 @@ export default function LandingPage() {
                     },
                 ],
             },
-            {
-                name: 'Jeremy Hastings',
-                bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-                dob: 'Mar 16, 2020',
-                sex: 'Male',
-                phone: "0515151515",
-                email: "rod@peters.com",
-                createdAt: '2020-03-16',
-                type: "landlord",
-                image: "https://media.licdn.com/dms/image/D5603AQF0-xrTkQ20Ww/profile-displayphoto-shrink_200_200/0/1708592318824?e=2147483647&v=beta&t=5R1Z-DAzCSlcC5MlHAuKy6d6YTNC0zVgq4w1bU6mv5Q",
-                forms: [
-                    {
-                        propertyAddress: "123, Temple St, VIC 3145",
-                        propertyImages: [
-                            "https://rimh2.domainstatic.com.au/aOy_2RdRAZnxU40AhLcPwMCQlWU=/660x440/filters:format(jpeg):quality(80)/2018702154_1_1_230813_113349-w2000-h1250",
-                        ],
-                        price: 500000,
-                        rent: 500,
-                        bond: 5000,
-                        state: "VIC",
-                        createdAt: '2020-03-16',
-                    },
-                ],
-            }
+            // {
+            //     name: 'Jeremy Hastings',
+            //     bio: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+            //     dob: 'Mar 16, 2020',
+            //     sex: 'Male',
+            //     phone: "0515151515",
+            //     email: "rod@peters.com",
+            //     createdAt: '2020-03-16',
+            //     type: "landlord",
+            //     image: "https://media.licdn.com/dms/image/D5603AQF0-xrTkQ20Ww/profile-displayphoto-shrink_200_200/0/1708592318824?e=2147483647&v=beta&t=5R1Z-DAzCSlcC5MlHAuKy6d6YTNC0zVgq4w1bU6mv5Q",
+            //     properties: [
+            //         {
+            //             propertyAddress: "123, Temple St, VIC 3145",
+            //             propertyImages: [
+            //                 "https://rimh2.domainstatic.com.au/aOy_2RdRAZnxU40AhLcPwMCQlWU=/660x440/filters:format(jpeg):quality(80)/2018702154_1_1_230813_113349-w2000-h1250",
+            //             ],
+            //             price: 500000,
+            //             rent: 500,
+            //             bond: 5000,
+            //             state: "VIC",
+            //             createdAt: '2020-03-16',
+            //         },
+            //     ],
+            // }
         ]
     }
 
@@ -225,7 +282,7 @@ export default function LandingPage() {
                                 {results?.type == "actor" ?
                                     <ActorSingleResult data={results?.data[0]}></ActorSingleResult>
                                     :
-                                    <ActorSingleResult data={results?.data[0]}></ActorSingleResult>
+                                    <PropertySingleResult data={results?.data[0]}></PropertySingleResult>
                                 }
                             </div>
                         }
@@ -238,7 +295,7 @@ export default function LandingPage() {
                                 {results?.type == "actor" ?
                                     <ActorMultipleResult data={results?.data}></ActorMultipleResult>
                                     :
-                                    <ActorMultipleResult data={results?.data}></ActorMultipleResult>
+                                    <PropertyMultipleResult data={results?.data}></PropertyMultipleResult>
                                 }
                             </>
                         }
