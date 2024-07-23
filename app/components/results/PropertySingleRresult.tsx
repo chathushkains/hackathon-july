@@ -19,7 +19,7 @@ export default function PropertySingleResult(props: any) {
                     <div className="mx-auto w-[50%] h-64 mt-6 sm:px-6 lg:grid pt-10 ">
                         <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
                             <img
-                                src={property.images[0]}
+                                src={property.image}
                                 className="h-full w-full object-cover object-center"
                             />
                         </div>

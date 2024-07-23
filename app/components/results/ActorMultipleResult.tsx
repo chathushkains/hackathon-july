@@ -78,7 +78,7 @@ export default function ActorMultipleResult(props: any) {
 
                 <h1 className='text-center font-bold text-4xl pt-24'>Here are the people</h1>
                 <p className='text-center text-sm pt-2'>Click on each actor to drill down into details</p>
-                <div className="flex flex-row justify-center gap-6 pt-8">
+                <div className="grid grid-cols-4 justify-center gap-6 pt-8">
                     {actors.map((actor: any) => (
                         <a key={actor.id} href={actor.href} className="group cursor-pointer">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
