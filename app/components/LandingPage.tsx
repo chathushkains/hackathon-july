@@ -27,76 +27,76 @@ export default function LandingPage() {
         setResults({})
         setFirstSearch(true);
 
-        axios.post('api/test/speech', { question:search}).then((res) => {
-            setResults(res?.data) 
-        } );
+        axios.post('api/test/speech', { question: search }).then((res) => {
+            setResults(res?.data)
+        });
 
-        // const response = {
-        //     "category": "actor",
-        //     "data": [
-        //         {
-        //             "id": "550e8400-e29b-41d4-a716-446655440009",
-        //             "name": "Benjamin",
-        //             "dob": "1981-02-27",
-        //             "bio": null,
-        //             "sex": "Male",
-        //             "phone": "4364344598",
-        //             "email": "benjamin.clark@example.com",
-        //             "createdAt": null,
-        //             "type": "actor",
-        //             "image": "https://i.pravatar.cc/250",
-        //             "properties": [
-        //                 {
-        //                     "id": 9,
-        //                     "name": "Spruce Point",
-        //                     "address": "606 Spruce St, NSW 1023",
-        //                     "state": "NSW",
-        //                     "image": "https://i.pravatar.cc/261",
-        //                     "price": 800,
-        //                     "rent": 350,
-        //                     "bond": 500,
-        //                     "createdAt": "2020-03-24"
-        //                 }
-        //             ]
-        //         },
-        //         {
-        //             "id": "550e8400-e29b-41d4-a716-446655440009",
-        //             "name": "Benjamin",
-        //             "dob": "1981-02-27",
-        //             "bio": null,
-        //             "sex": "Male",
-        //             "phone": "4364344598",
-        //             "email": "benjamin.clark@example.com",
-        //             "createdAt": null,
-        //             "type": "actor",
-        //             "image": "https://i.pravatar.cc/250",
-        //             "properties": [
-        //                 {
-        //                     "id": 9,
-        //                     "name": "Spruce Point",
-        //                     "address": "606 Spruce St, NSW 1023",
-        //                     "state": "VIC",
-        //                     "images": ["https://i.pravatar.cc/261"],
-        //                     "price": 12000,
-        //                     "rent": 120,
-        //                     "bond": 1000,
-        //                     "createdAt": "2020-03-24"
-        //                 },
-        //                 {
-        //                     "id": 9,
-        //                     "name": "Spruce Point",
-        //                     "address": "606 Spruce St, NSW 1023",
-        //                     "state": "NT",
-        //                     "images": ["https://i.pravatar.cc/261"],
-        //                     "price": 956,
-        //                     "rent": 400,
-        //                     "bond": 4000,
-        //                     "createdAt": "2020-03-24"
-        //                 }
-        //             ]
-        //         }
-        //     ]
-        // }
+        const response = {
+            "category": "actor",
+            "data": [
+                {
+                    "id": "550e8400-e29b-41d4-a716-446655440009",
+                    "name": "Benjamin",
+                    "dob": "1981-02-27",
+                    "bio": null,
+                    "sex": "Male",
+                    "phone": "4364344598",
+                    "email": "benjamin.clark@example.com",
+                    "createdAt": null,
+                    "type": "actor",
+                    "image": "https://i.pravatar.cc/250",
+                    "properties": [
+                        {
+                            "id": 9,
+                            "name": "Spruce Point",
+                            "address": "606 Spruce St, NSW 1023",
+                            "state": "NSW",
+                            "image": "https://i.pravatar.cc/261",
+                            "price": 800,
+                            "rent": 350,
+                            "bond": 500,
+                            "createdAt": "2020-03-24"
+                        }
+                    ]
+                },
+                {
+                    "id": "550e8400-e29b-41d4-a716-446655440009",
+                    "name": "Benjamin",
+                    "dob": "1981-02-27",
+                    "bio": null,
+                    "sex": "Male",
+                    "phone": "4364344598",
+                    "email": "benjamin.clark@example.com",
+                    "createdAt": null,
+                    "type": "actor",
+                    "image": "https://i.pravatar.cc/250",
+                    "properties": [
+                        {
+                            "id": 9,
+                            "name": "Spruce Point",
+                            "address": "606 Spruce St, NSW 1023",
+                            "state": "VIC",
+                            "images": ["https://i.pravatar.cc/261"],
+                            "price": 12000,
+                            "rent": 120,
+                            "bond": 1000,
+                            "createdAt": "2020-03-24"
+                        },
+                        {
+                            "id": 9,
+                            "name": "Spruce Point",
+                            "address": "606 Spruce St, NSW 1023",
+                            "state": "NT",
+                            "images": ["https://i.pravatar.cc/261"],
+                            "price": 956,
+                            "rent": 400,
+                            "bond": 4000,
+                            "createdAt": "2020-03-24"
+                        }
+                    ]
+                }
+            ]
+        }
 
         // const response = {
         //     "category": "property",
@@ -154,7 +154,7 @@ export default function LandingPage() {
         //     ]
         // }
 
-        // setResults(response)
+        setResults(response)
     };
 
     const handleClear = () => {
@@ -163,8 +163,8 @@ export default function LandingPage() {
     };
 
     return (
-        <div className="bg-white">
-            <header className="absolute inset-x-0 top-0 z-50">
+        <div className="bg-purple-800">
+            <header className="absolute inset-x-0 top-0 z-50 bg-white">
                 <nav
                     aria-label="Global"
                     className="flex items-center justify-between p-6 lg:px-8">
@@ -200,6 +200,7 @@ export default function LandingPage() {
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                         <a
                             href="https://www.hutly.com"
+                            target="_blank"
                             className="text-sm font-semibold leading-6 text-gray-900">
                             Visit Website <span aria-hidden="true">&rarr;</span>
                         </a>
@@ -243,6 +244,7 @@ export default function LandingPage() {
                                 <div className="py-6">
                                     <a
                                         href="https://www.hutly.com"
+                                        target="_blank"
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                         Visit Website
                                     </a>
@@ -253,13 +255,13 @@ export default function LandingPage() {
                 </Dialog>
             </header>
 
-            <div className="relative isolate px-6 pt-14 lg:px-8">
+            <div className="relative isolate px-6 pt-14 lg:px-8 bg-gradient-to-tr from-white to-gray-50">
                 <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-56">
                     <div className="text-center">
                         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                             Hutly Genie
                         </h1>
-                        <p className="mt-6 text-lg leading-8 text-gray-60">
+                        <p className="mt-8 text-lg leading-8 text-gray-60">
                             Please type in your wishes, one at a time.
                         </p>
                         <div className="mt-4">
@@ -272,20 +274,20 @@ export default function LandingPage() {
                                     setSearch(e.target?.value);
                                 }}
                                 placeholder="Who are the best performing agents in my team?"
-                                className="rounded-full block w-full border-0 py-3 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="rounded-full block w-full border-0 py-6 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-lg sm:leading-6"
                             />
                         </div>
                         <div className="mt-10 flex items-center justify-center gap-x-6">
                             <input
                                 type="submit"
                                 value="Make a wish!"
-                                className="rounded-full bg-purple-800 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-purple-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="rounded-full bg-purple-800 px-8 py-3 text-lg font-semibold text-white shadow-sm hover:bg-purple-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 onClick={() => handleWish()}
                             />
 
                             <a
                                 href="#"
-                                className="text-sm font-semibold leading-6 text-gray-900"
+                                className="text-lg font-semibold leading-6 text-gray-900"
                                 onClick={() => handleClear()}>
                                 Clear
                             </a>
@@ -293,8 +295,12 @@ export default function LandingPage() {
                     </div>
                 </div>
 
+
+            </div>
+
+            {firstSearch && <div className="bg-purple-800 w-full h-full p-16">
                 {(
-                    <div className="bg-white">
+                    <div className="bg-white p-24 rounded-lg">
                         {results?.data?.length == 0 && <NoResult></NoResult>}
 
                         {results?.data?.length == 1 && (
@@ -334,7 +340,7 @@ export default function LandingPage() {
                         )}
                     </div>
                 )}
-            </div>
+            </div>}
         </div>
     );
 }
