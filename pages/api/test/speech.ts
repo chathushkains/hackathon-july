@@ -122,7 +122,7 @@ export default async function POST(req: NextApiRequest, res: NextApiResponse) {
     const questionData = await converse(trimmedQuestion);
 
     if (questionData) {
-      return res.status(200).json({questionData});
+      return res.status(200).json({data : questionData});
     } else {
       return res.status(400).json({error : 'No data returned from converse function'});
     }
