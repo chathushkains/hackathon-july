@@ -62,7 +62,7 @@ function extractJson(responseText: string) {
 
 async function converse(userInput: string) {
   try {
-    const jsonText = `convert to JSON`;
+    const jsonText = `convert to JSON add properties data inside data also create data as array of objects ` + "Add a category after converting to json category based on Actor which is role along with data.";
     const response = await client.send(
       new ConverseCommand({
         modelId,
@@ -102,7 +102,8 @@ async function converse(userInput: string) {
 
     if (responseText) {
       const data = extractJson(responseText);
-      return data;
+      const transformedData = transformDataStructure(data);
+      return transformedData;
     } else {
       console.error("No response text received");
       return null;
@@ -115,14 +116,32 @@ async function converse(userInput: string) {
 
 
 
+function transformDataStructure(data:any) {
+  if (!data || !data.data) return data;
+
+  const transformedData = {
+    category: data.category,
+    data: data.data.map((item: { [x: string]: any; property: any; }) => {
+      const { property, ...rest } = item;
+      return {
+        ...rest,
+        properties: property ? [property] : []
+      };
+    })
+  };
+
+  return transformedData;
+}
+
+
+
 export default async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { question } = await req.body as any;
     const trimmedQuestion = question.trim();
     const questionData = await converse(trimmedQuestion);
-
     if (questionData) {
-      return res.status(200).json({data : questionData});
+      return res.status(200).json(questionData);
     } else {
       return res.status(400).json({error : 'No data returned from converse function'});
     }
