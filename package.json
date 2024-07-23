@@ -9,14 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-bedrock": "^3.616.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.616.0",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
+    "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "next": "14.2.5",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
-    "@aws-sdk/client-bedrock": "^3.616.0",
-    "@aws-sdk/client-bedrock-runtime": "^3.616.0",
     "react-dom": "^18"
   },
   "devDependencies": {
