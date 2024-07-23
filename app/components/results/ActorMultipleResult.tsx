@@ -21,11 +21,11 @@ export default function ActorMultipleResult(props: any) {
             let totalRent = 0
 
             actors.map((actor: any) => {
-                total += actor?.forms?.length
+                total += actor?.properties?.length
 
-                actor?.forms?.map((form: any) => {
-                    totalPrice += form?.price
-                    totalRent += form?.rent
+                actor?.properties?.map((property: any) => {
+                    totalPrice += property?.price
+                    totalRent += property?.rent
                 })
             })
 

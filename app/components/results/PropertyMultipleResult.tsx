@@ -21,12 +21,9 @@ export default function PropertyMultipleResult(props: any) {
             let totalRent = 0
 
             properties.map((property: any) => {
-                total += property?.forms?.length
-
-                property?.forms?.map((form: any) => {
-                    totalPrice += form?.price
-                    totalRent += form?.rent
-                })
+                total += property?.actors?.length
+                totalPrice += property?.price
+                totalRent += property?.rent
             })
 
             setTotalProperties(total)
@@ -75,19 +72,19 @@ export default function PropertyMultipleResult(props: any) {
                     </div>
                 </div>
 
-                <h1 className='text-center font-bold text-4xl pt-24'>Here are the people</h1>
+                <h1 className='text-center font-bold text-4xl pt-24'>Here are the properties</h1>
                 <p className='text-center text-sm pt-2'>Click on each property to drill down into details</p>
                 <div className="flex flex-row justify-center gap-6 pt-8">
                     {properties.map((property: any) => (
                         <a key={property.id} href={property.href} className="group cursor-pointer">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                                 <img
-                                    src={property.image}
+                                    src={property.images[0]}
                                     className="h-full w-full object-cover object-center group-hover:opacity-75"
                                 />
                             </div>
-                            <h3 className="text-center mt-4 font-bold text-md text-gray-700">{property.name}</h3>
-                            <p className="text-center mt-1 capitalize text-sm text-gray-900">{property.type}</p>
+                            <h3 className="text-center mt-4 font-bold text-md text-gray-700">{property.address}</h3>
+                            <p className="text-center mt-1 capitalize text-sm text-gray-900">{property.state}</p>
                         </a>
                     ))}
                 </div>
