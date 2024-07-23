@@ -29,7 +29,7 @@ export default function LandingPage() {
 
         axios.post('api/test/speech', { question:search}).then((res) => {
             setResults(res?.data) 
-        } );;
+        } );
 
         // const response = {
         //     "category": "actor",
