@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import LineChart from '../charts/LineChart';
@@ -8,8 +8,19 @@ import PieChart from '../charts/PieChart';
 import BarChart from '../charts/BarChart';
 
 export default function ActorSingleResult(props: any) {
-
     const actor = props.data;
+
+    useEffect(() => {
+        if (actor.properties) {
+            let states : any = []
+            let stateValues : any = []
+
+            actor?.properties.map((property: any) => {
+                states.push(property.state)
+                stateValues.push(property.price)
+            })
+        }
+    }, [actor])
 
     return (
         <div className="bg-white">
