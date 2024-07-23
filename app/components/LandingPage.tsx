@@ -31,72 +31,72 @@ export default function LandingPage() {
             setResults(res?.data)
         });
 
-        const response = {
-            "category": "actor",
-            "data": [
-                {
-                    "id": "550e8400-e29b-41d4-a716-446655440009",
-                    "name": "Benjamin",
-                    "dob": "1981-02-27",
-                    "bio": null,
-                    "sex": "Male",
-                    "phone": "4364344598",
-                    "email": "benjamin.clark@example.com",
-                    "createdAt": null,
-                    "type": "actor",
-                    "image": "https://i.pravatar.cc/250",
-                    "properties": [
-                        {
-                            "id": 9,
-                            "name": "Spruce Point",
-                            "address": "606 Spruce St, NSW 1023",
-                            "state": "NSW",
-                            "image": "https://i.pravatar.cc/261",
-                            "price": 800,
-                            "rent": 350,
-                            "bond": 500,
-                            "createdAt": "2020-03-24"
-                        }
-                    ]
-                },
-                {
-                    "id": "550e8400-e29b-41d4-a716-446655440009",
-                    "name": "Benjamin",
-                    "dob": "1981-02-27",
-                    "bio": null,
-                    "sex": "Male",
-                    "phone": "4364344598",
-                    "email": "benjamin.clark@example.com",
-                    "createdAt": null,
-                    "type": "actor",
-                    "image": "https://i.pravatar.cc/250",
-                    "properties": [
-                        {
-                            "id": 9,
-                            "name": "Spruce Point",
-                            "address": "606 Spruce St, NSW 1023",
-                            "state": "VIC",
-                            "images": ["https://i.pravatar.cc/261"],
-                            "price": 12000,
-                            "rent": 120,
-                            "bond": 1000,
-                            "createdAt": "2020-03-24"
-                        },
-                        {
-                            "id": 9,
-                            "name": "Spruce Point",
-                            "address": "606 Spruce St, NSW 1023",
-                            "state": "NT",
-                            "images": ["https://i.pravatar.cc/261"],
-                            "price": 956,
-                            "rent": 400,
-                            "bond": 4000,
-                            "createdAt": "2020-03-24"
-                        }
-                    ]
-                }
-            ]
-        }
+        // const response = {
+        //     "category": "actor",
+        //     "data": [
+        //         {
+        //             "id": "550e8400-e29b-41d4-a716-446655440009",
+        //             "name": "Benjamin",
+        //             "dob": "1981-02-27",
+        //             "bio": null,
+        //             "sex": "Male",
+        //             "phone": "4364344598",
+        //             "email": "benjamin.clark@example.com",
+        //             "createdAt": null,
+        //             "type": "actor",
+        //             "image": "https://i.pravatar.cc/250",
+        //             "properties": [
+        //                 {
+        //                     "id": 9,
+        //                     "name": "Spruce Point",
+        //                     "address": "606 Spruce St, NSW 1023",
+        //                     "state": "NSW",
+        //                     "image": "https://i.pravatar.cc/261",
+        //                     "price": 800,
+        //                     "rent": 350,
+        //                     "bond": 500,
+        //                     "createdAt": "2020-03-24"
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             "id": "550e8400-e29b-41d4-a716-446655440009",
+        //             "name": "Benjamin",
+        //             "dob": "1981-02-27",
+        //             "bio": null,
+        //             "sex": "Male",
+        //             "phone": "4364344598",
+        //             "email": "benjamin.clark@example.com",
+        //             "createdAt": null,
+        //             "type": "actor",
+        //             "image": "https://i.pravatar.cc/250",
+        //             "properties": [
+        //                 {
+        //                     "id": 9,
+        //                     "name": "Spruce Point",
+        //                     "address": "606 Spruce St, NSW 1023",
+        //                     "state": "VIC",
+        //                     "images": ["https://i.pravatar.cc/261"],
+        //                     "price": 12000,
+        //                     "rent": 120,
+        //                     "bond": 1000,
+        //                     "createdAt": "2020-03-24"
+        //                 },
+        //                 {
+        //                     "id": 9,
+        //                     "name": "Spruce Point",
+        //                     "address": "606 Spruce St, NSW 1023",
+        //                     "state": "NT",
+        //                     "images": ["https://i.pravatar.cc/261"],
+        //                     "price": 956,
+        //                     "rent": 400,
+        //                     "bond": 4000,
+        //                     "createdAt": "2020-03-24"
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        // }
 
         // const response = {
         //     "category": "property",
@@ -154,7 +154,7 @@ export default function LandingPage() {
         //     ]
         // }
 
-        setResults(response)
+        // setResults(response)
     };
 
     const handleClear = () => {
