@@ -152,11 +152,11 @@ export default function PropertyMultipleResult(props: any) {
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                                 <img
                                     src={property.image}
-                                    className="h-full w-full object-cover object-center group-hover:opacity-75"
+                                    className="h-44 w-full object-cover object-center group-hover:opacity-75"
                                 />
                             </div>
                             <h3 className="text-center mt-4 font-bold text-md text-gray-700">{property.address}</h3>
-                            <p className="text-center mt-1 capitalize text-sm text-gray-900">{property.state}</p>
+                            <p className="text-center mt-1 capitalize text-md text-gray-900">Sale Price ${property.price}</p>
                         </a>
                     ))}
                 </div>

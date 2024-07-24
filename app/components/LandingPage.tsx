@@ -23,11 +23,19 @@ export default function LandingPage() {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState<any>({});
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleWish = async () => {
+
+    if (!search) {
+      setError(true)
+      return false
+    }
+
     setResults({});
     setFirstSearch(true);
     setLoading(true);
+    setError(false)
 
     axios.post("api/test/speech", { question: search }).then((res) => {
       setResults(res?.data);
@@ -163,6 +171,7 @@ export default function LandingPage() {
   const handleClear = () => {
     setFirstSearch(false);
     setResults({});
+    setError(false)
   };
 
   return (
@@ -258,7 +267,10 @@ export default function LandingPage() {
         </Dialog>
       </header>
 
-      <div className="relative isolate px-6 pt-14 lg:px-8 bg-gradient-to-tr from-white to-gray-50">
+      <div className="relative isolate px-6 pt-14 lg:px-8 bg-gradient-to-tr from-white to-gray-50 ">
+        <div className="-z-1 absolute -top-12 -left-3 h-44 w-44 rounded-full bg-white bg-gradient-to-b from-white to-indigo-600 opacity-20"></div>
+        <div className="-z-1 absolute -top-36 -right-32 h-96 w-96 rounded-full bg-white bg-gradient-to-b from-white to-indigo-600 opacity-20"></div>
+        <div className="-z-1 absolute top-3 -right-50 h-64 w-64 rounded-full bg-white bg-gradient-to-b from-white to-indigo-600 opacity-20"></div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -296,57 +308,58 @@ export default function LandingPage() {
               </a>
             </div>
           </div>
+          {error && <p className="text-center text-sm p-4 rounded-full mt-6 text-black">⚠️ Please enter your wish and click on Make a Wish!</p>}
         </div>
       </div>
 
       {firstSearch && (
         <div className="bg-purple-800 w-full h-full p-16">
-        {loading ? (
+          {loading ? (
             <div className="flex justify-center items-center h-full">
-                <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
+              <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
             </div>
-        ) : (
+          ) : (
             <div className="bg-white p-24 rounded-lg">
-                {results?.data?.length == 0 && <NoResult></NoResult>}
+              {results?.data?.length == 0 && <NoResult></NoResult>}
 
-                {results?.data?.length == 1 && (
-                    <div className="">
-                        <h1 className="m-auto text-3xl font-bold text-center">
-                            Tadaa! Your wish is my command!
-                        </h1>
-                        <p className="m-auto pt-2 text-lg font-thin text-center">
-                            Scroll down to see your search results based on our data
-                        </p>
-                        {"actor|agent|landlord|tenant".includes(results?.category.toLowerCase()) ? (
-                            <ActorSingleResult
-                                data={results?.data[0]}></ActorSingleResult>
-                        ) : (
-                            <PropertySingleResult
-                                data={results?.data[0]}></PropertySingleResult>
-                        )}
-                    </div>
-                )}
+              {results?.data?.length == 1 && (
+                <div className="">
+                  <h1 className="m-auto text-3xl font-bold text-center">
+                    Tadaa! Your wish is my command!
+                  </h1>
+                  <p className="m-auto pt-2 text-lg font-thin text-center">
+                    Scroll down to see your search results based on our data
+                  </p>
+                  {"actor|agent|landlord|tenant".includes(results?.category.toLowerCase()) ? (
+                    <ActorSingleResult
+                      data={results?.data[0]}></ActorSingleResult>
+                  ) : (
+                    <PropertySingleResult
+                      data={results?.data[0]}></PropertySingleResult>
+                  )}
+                </div>
+              )}
 
-                {results?.data?.length > 1 && (
-                    <>
-                        <h1 className="m-auto text-3xl font-bold text-center">
-                            Tadaa! Your wish is my command!
-                        </h1>
-                        <p className="m-auto pt-2 text-lg font-thin text-center">
-                            Scroll down to see your search results based on our data
-                        </p>
-                        {"actor|agent|landlord|tenant".includes(results?.category.toLowerCase()) ? (
-                            <ActorMultipleResult
-                                data={results?.data}></ActorMultipleResult>
-                        ) : (
-                            <PropertyMultipleResult
-                                data={results?.data}></PropertyMultipleResult>
-                        )}
-                    </>
-                )}
+              {results?.data?.length > 1 && (
+                <>
+                  <h1 className="m-auto text-3xl font-bold text-center">
+                    Tadaa! Your wish is my command!
+                  </h1>
+                  <p className="m-auto pt-2 text-lg font-thin text-center">
+                    Scroll down to see your search results based on our data
+                  </p>
+                  {"actor|agent|landlord|tenant".includes(results?.category.toLowerCase()) ? (
+                    <ActorMultipleResult
+                      data={results?.data}></ActorMultipleResult>
+                  ) : (
+                    <PropertyMultipleResult
+                      data={results?.data}></PropertyMultipleResult>
+                  )}
+                </>
+              )}
             </div>
-        )}
-    </div>
+          )}
+        </div>
       )}
     </div>
   );

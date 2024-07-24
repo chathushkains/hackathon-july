@@ -112,7 +112,30 @@ export default function PropertySingleResult(props: any) {
                         <p className='pt-2 pb-4'>Click on the following people to drill down to details</p>
 
                         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                            {property.actors.map((actor: any) => (
+                            {property?.actors && property?.actors?.map((actor: any) => (
+                                <div key={actor.id} className="group relative">
+                                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                        <img
+                                            src={actor.image}
+                                            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                        />
+                                    </div>
+                                    <div className="mt-4 flex justify-between">
+                                        <div>
+                                            <h3 className="text-md text-gray-700">
+                                                <a href={actor.href}>
+                                                    <span aria-hidden="true" className="absolute inset-0" />
+                                                    {actor.name}
+                                                </a>
+                                            </h3>
+                                            <p className="mt-1 text-sm text-gray-400">Member since {actor.createdAt}</p>
+                                        </div>
+                                        <p className="capitalize text-sm font-bold text-gray-900">{actor.type}</p>
+                                    </div>
+                                </div>
+                            ))}
+
+                            {property?.users && property?.users?.map((actor: any) => (
                                 <div key={actor.id} className="group relative">
                                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                         <img
