@@ -20,7 +20,7 @@ export default function ActorSingleResult(props: any) {
     }, [actor])
 
     return (
-        <div className="bg-white">
+        <div className="bg-gradient-to-r from-gray-300 to-indigo-600">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <div className='flex flex-row'>
                     {/* Image gallery */}

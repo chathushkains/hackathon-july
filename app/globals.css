@@ -4,15 +4,15 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 214, 219, 220; /* Start color for light mode */
+  --background-end-rgb: 230, 230, 255;   /* Light purple end color for light mode */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 30, 30, 30;  /* Start color for dark mode */
+    --background-end-rgb: 75, 0, 130;    /* Darker purple end color for dark mode */
   }
 }
 

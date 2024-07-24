@@ -166,7 +166,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="bg-purple-800">
+    <div className="bg-gradient-to-r from-gray-300 to-indigo-600">
       <header className="absolute inset-x-0 top-0 z-50 bg-white">
         <nav
           aria-label="Global"
@@ -258,7 +258,7 @@ export default function LandingPage() {
         </Dialog>
       </header>
 
-      <div className="relative isolate px-6 pt-14 lg:px-8 bg-gradient-to-tr from-white to-gray-50">
+      <div className="relative isolate px-6 pt-14 lg:px-8 bg-gradient-to-r from-gray-500 to-indigo-600">
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -300,17 +300,17 @@ export default function LandingPage() {
       </div>
 
       {firstSearch && (
-        <div className="bg-purple-800 w-full h-full p-16">
+        <div className="bg-gradient-to-r from-gray-300 to-indigo-600 w-full h-full p-16">
         {loading ? (
             <div className="flex justify-center items-center h-full">
                 <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
             </div>
         ) : (
-            <div className="bg-white p-24 rounded-lg">
+            <div className="bg-gradient-to-r from-gray-300 to-indigo-600">
                 {results?.data?.length == 0 && <NoResult></NoResult>}
 
                 {results?.data?.length == 1 && (
-                    <div className="">
+                    <div className="bg-gradient-to-r from-gray-300 to-indigo-600">
                         <h1 className="m-auto text-3xl font-bold text-center">
                             Tadaa! Your wish is my command!
                         </h1>
