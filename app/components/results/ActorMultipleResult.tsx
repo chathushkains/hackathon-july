@@ -146,7 +146,7 @@ export default function ActorMultipleResult(props: any) {
                     </div>
                 </div>
 
-                <h1 className='text-center font-bold text-4xl pt-24'>Here are the people</h1>
+                <h1 className='text-center font-bold text-4xl pt-44'>Here are the people</h1>
                 <p className='text-center text-sm pt-2'>Click on each actor to drill down into details</p>
                 <div className="grid grid-cols-4 justify-center gap-6 pt-8">
                     {actors.map((actor: any) => (
@@ -161,6 +161,67 @@ export default function ActorMultipleResult(props: any) {
                             <p className="text-center mt-1 capitalize text-sm text-gray-900">{actor.type}</p>
                         </a>
                     ))}
+                </div>
+            </div>
+
+            <h1 className='text-center font-bold text-4xl pt-24'>Here are all the results</h1>
+            <p className='text-center text-sm pt-2 pb-12'>Click on each actor to drill down into details</p>
+            <div className='flex justify-center '>
+
+                <div className="relative overflow-x-auto">
+                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Name
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Type
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Phone
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Email
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Member Since
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Date of Birth
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {actors.map((actor: any, i: any) => {
+                                return <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img className='h-12 w-12 rounded-full' src={actor.image}></img>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {actor.name}
+                                    </th>
+                                    <td className="px-6 py-4 capitalize">
+                                        {actor.type}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {actor.phone}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {actor.email}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {actor.createdAt}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {actor.dob}
+                                    </td>
+                                </tr>
+                            })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

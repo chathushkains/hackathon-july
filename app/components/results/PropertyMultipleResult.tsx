@@ -144,7 +144,7 @@ export default function PropertyMultipleResult(props: any) {
                     </div>
                 </div>
 
-                <h1 className='text-center font-bold text-4xl pt-24'>Here are the properties</h1>
+                <h1 className='text-center font-bold text-4xl pt-44'>Here are the properties</h1>
                 <p className='text-center text-sm pt-2'>Click on each property to drill down into details</p>
                 <div className="grid grid-cols-4 justify-center gap-6 pt-8">
                     {properties.map((property: any) => (
@@ -159,6 +159,67 @@ export default function PropertyMultipleResult(props: any) {
                             <p className="text-center mt-1 capitalize text-md text-gray-900">Sale Price ${property.price}</p>
                         </a>
                     ))}
+                </div>
+
+                <h1 className='text-center font-bold text-4xl pt-44'>Here are all the results</h1>
+                <p className='text-center text-sm pt-2 pb-12'>Click on each actor to drill down into details</p>
+                <div className='flex justify-center '>
+
+                    <div className="relative overflow-x-auto">
+                        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" className="px-6 py-3">
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Address
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Bond
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Rent
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Price
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Member Since
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        State
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {properties.map((property: any, i: any) => {
+                                    return <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <img className='h-12 w-12 rounded-full' src={property.image}></img>
+                                        </th>
+                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {property.address}
+                                        </th>
+                                        <td className="px-6 py-4 capitalize">
+                                            ${property.bond}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            ${property.rent}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            ${property.price}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {property.createdAt}
+                                        </td>
+                                        <td className="px-6 py-4 uppercase">
+                                            {property.state}
+                                        </td>
+                                    </tr>
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

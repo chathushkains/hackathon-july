@@ -268,9 +268,9 @@ export default function LandingPage() {
       </header>
 
       <div className="relative isolate px-6 pt-14 lg:px-8 bg-gradient-to-tr from-white to-gray-50 ">
-        <div className="-z-1 absolute -top-12 -left-3 h-44 w-44 rounded-full bg-white bg-gradient-to-b from-white to-indigo-600 opacity-20"></div>
-        <div className="-z-1 absolute -top-36 -right-32 h-96 w-96 rounded-full bg-white bg-gradient-to-b from-white to-indigo-600 opacity-20"></div>
-        <div className="-z-1 absolute top-3 -right-50 h-64 w-64 rounded-full bg-white bg-gradient-to-b from-white to-indigo-600 opacity-20"></div>
+        <div className="-z-1 absolute -top-12 -left-3 h-44 w-44 rounded-full bg-white bg-gradient-to-b from-white to-gray-300 opacity-20"></div>
+        <div className="-z-1 absolute -top-36 -right-32 h-[500px] w-[500px] rounded-full bg-white bg-gradient-to-b from-white to-gray-300 opacity-20"></div>
+        <div className="-z-1 absolute top-3 -right-50 h-64 w-64 rounded-full bg-white bg-gradient-to-b from-white to-gray-300 opacity-20"></div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
