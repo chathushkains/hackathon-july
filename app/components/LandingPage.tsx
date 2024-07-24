@@ -218,7 +218,7 @@ export default function LandingPage() {
             </a>
           </div>
         </nav>
-        <Dialog
+        {/* <Dialog
           open={mobileMenuOpen}
           onClose={setMobileMenuOpen}
           className="lg:hidden">
@@ -264,7 +264,7 @@ export default function LandingPage() {
               </div>
             </div>
           </DialogPanel>
-        </Dialog>
+        </Dialog> */}
       </header>
 
       <div className="relative isolate px-6 pt-14 lg:px-8 bg-gradient-to-tr from-white to-gray-50 ">
